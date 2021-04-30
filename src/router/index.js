@@ -1,30 +1,31 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const loggedInGuard = (to, from, next) => {
-  if (sessionStorage.getItem('loggedIn')) {
-    next();
+  if(sessionStorage.getItem("loggedIn")) {
+    next()
   } else {
-    next('/');
+    next("/")
   }
-};
+}
 
 const notLoggedInGuard = (to, from, next) => {
-  if (sessionStorage.getItem('loggedIn')) {
-    next('/dashboard');
+  if(sessionStorage.getItem("loggedIn")) {
+    next("/dashboard")
   } else {
-    next();
+    next()
   }
-};
+}
+
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: () => import('../views/Home.vue'),
-    beforeEnter: notLoggedInGuard,
+    beforeEnter: notLoggedInGuard
   },
   {
     path: '/dashboard',
@@ -34,29 +35,26 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('../views/Dashboard/Home'),
+        component: () => import('../views/Dashboard/Home.vue')
       },
       {
         path: 'users',
-        component: () => import('../views/Dashboard/Users'),
+        component: () => import('../views/Dashboard/Users.vue')
       },
       {
         path: 'cars',
-        component: () => import('../views/Dashboard/Cars'),
+        component: () => import('../views/Dashboard/Cars.vue')
       },
       {
         path: 'rentCar',
-        component: () => import('../views/Dashboard/RentCar'),
-      },
-    ],
-  },
-
-];
+        component: () => import('../views/Dashboard/RentCar')
+      }
+    ]
+  }
+]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes,
-});
+  routes
+})
 
-export default router;
+export default router

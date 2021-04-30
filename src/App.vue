@@ -7,17 +7,17 @@
 </template>
 
 <script>
+
 export default {
-  name: 'App',
+  name: 'App'
 };
 </script>
 
 <style>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .8s;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .8s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 </style>
